@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.3.8)
+    cuba (3.4.0)
+      rack
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    rack (1.6.1)
+    rack-protection (1.5.3)
+      rack
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cuba
+  launchy
+  rack-protection
