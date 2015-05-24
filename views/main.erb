@@ -35,6 +35,7 @@ $ git config --global user.name  "<%= current.name %>"
       <form id="<%=form_id %>" method="POST" action="<%= set_current_path(user) %>">
           <input type="hidden" name="name"  value="<%= user.name  %>">
           <input type="hidden" name="email" value="<%= user.email %>">
+          <input type="hidden" name="group" value="pair">
       </form>
       <p><%= format_pair_names(user.name) %></p>
       <img src="<%= user.avatar_url %>?d=identicon"/>
@@ -56,6 +57,7 @@ $ git config --global user.name  "<%= current.name %>"
       <form id="<%=form_id %>" method="POST" action="<%= set_current_path(user) %>">
           <input type="hidden" name="name"  value="<%= user.name  %>">
           <input type="hidden" name="email" value="<%= user.email %>">
+          <input type="hidden" name="group" value="solo">
       </form>
       
       <p><%= user.name  %></p>

@@ -22,9 +22,7 @@ Cuba.define do
 
 
   on get do
-    # -----------------------------------
-    # serve css files
-    # -----------------------------------
+    # GET /styles/main.css
     on "styles", extension("css") do |file|
       res.write File.open("styles/#{file}.css").read
     end
@@ -39,16 +37,13 @@ Cuba.define do
   end
 
   on post do
-    # POST with data like user[fname]=John&user[lname]=Doe
+    # POST /set_current
     on terminal('set_current') do 
-      on param('name'), param('email') do |name, email|
+      on param('name'), param('email'), param('group') do |name, email|
         user = GitUser.new(name, email)
-        if user
-          set_notice('success' + " User #{user.name.inspect} is the new current git user")
-        else
-          set_notice('failure')
-        end
-        
+        user.set_current
+
+        set_notice('success' + " User #{user.name.inspect} is the new current git user")
         res.redirect "/"
       end
       on true do

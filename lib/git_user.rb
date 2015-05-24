@@ -16,4 +16,10 @@ class GitUser < Struct.new(:name, :email)
     gravatar_id = Digest::MD5::hexdigest(email).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png"
   end
+
+  def set_current
+    `git config --global user.email #{email}`
+    `git config --global user.name  #{name}`
+  end
+  
 end
