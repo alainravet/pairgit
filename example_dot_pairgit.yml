@@ -1,0 +1,16 @@
+---
+:solos:
+- !ruby/struct:GitUser
+  name: Alain Ravet
+  email: alainravet@gmail.com
+  github: alainravet
+:pairs:
+- !ruby/struct:GitUser
+  name: Alain Ravet + Aliaksei Kliuchnikau
+  email: dev+alainravet_kliuchnikau@gmail.com
+- !ruby/struct:GitUser
+  name: Alain Ravet + Nathan Vanauwera
+  email: ppatvasco+ara_nva@gmail.com
+- !ruby/struct:GitUser
+  name: Alain Ravet + Beatriz Febles
+  email: dev+alainravet_kishiamy@gmail.com

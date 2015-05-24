@@ -1,0 +1,45 @@
+<section id='current' class='group'>
+  <h2 >Next commits' author : </h2>
+  <div class="thumbnail_naked">
+    <img src="<%= current.avatar_url%>?s=120"/>
+  </div>
+  <div class="more">
+    <p><%= current.name  %></p>
+    <p><%= current.email %></p>
+    <pre>
+# in the console:
+$ git config --global user.email "<%= current.email %>"
+$ git config --global user.name  "<%= current.name %>"
+    </pre>
+  </div>
+  <div style="clear:both"></div>
+</section>
+
+<p>info: the data below is stored in ~/.pairgit.yml</p>  
+
+<section id="available_pairs" class="group">
+  <h2 >Known Pairs <small>(click to select as new authors)</small></h2>
+
+  <% pairs.each do |user| %>
+    <div class="thumbnail" onclick="alert('... and <%= user.name %> are now the current authors');">
+      <p><%= format_pair_names(user.name) %></p>
+      <img src="<%= user.avatar_url %>?d=identicon"/>
+      <p><%= format_pair_email(user.email) %></p>
+    </div>
+  <% end %>
+  <div style="clear:both"></div>
+</section>
+
+<section id="available_solos" class="group">
+  <h2 >Known Solos <small>(click to select as new author)</small></h2>
+
+  <% solos.each do |user| %>
+    <div class="thumbnail" onclick="alert('... and <%= user.name %> is now the current author');">
+      <p><%= user.name  %></p>
+      <img src="<%= user.avatar_url %>?d=identicon"/>
+      <p><%= user.email %></p>
+    </div>
+  <% end %>
+
+  <div style="clear:both"></div>
+</section>

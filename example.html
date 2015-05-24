@@ -1,0 +1,169 @@
+<html>
+<style type="text/css" media="screen">
+
+.githubid {color:#4183c4}
+
+body {
+  font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  xpadding: 100px;
+  font-size: 13px;
+}
+
+section.group {
+  clear:both;
+  padding: 15px;
+  margin-bottom: 10px;
+  /* border-radius */
+  -webkit-border-radius:  15px;
+  -moz-border-radius:     15px;
+  border-radius:          15px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+  -moz-box-shadow:    rgba(0,0,0,0.2) 0px 1px 3px;
+  box-shadow:         rgba(0,0,0,0.2) 0px 1px 3px;
+}
+
+section.group > h2 { 
+  text-align: center;
+  padding-bottom:4px;
+  border-bottom: 1px #ccc solid;
+}
+div.group > h2 > small {
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+div.thumbnail {
+  background: #fff;
+  margin: 0 auto;
+  width: 220px;
+  padding: 5px 0px 15px;
+  margin: 10px;
+  text-align: center;
+  border: 2px solid;
+  /* border-radius */
+  -webkit-border-radius:  15px;
+  -moz-border-radius:     15px;
+  border-radius:          15px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+  -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+  box-shadow:     rgba(0,0,0,0.2) 0px 1px 3px;
+}
+div.thumbnail:hover {
+  border-color: red;
+}
+  
+section#current {
+  background: lightyellow;
+}
+section#current div.thumbnail_naked  {
+  float:left;
+  padding: 10px;
+  margin: 0 25px 0 0;
+}
+section#current div.thumbnail_naked img {
+  -webkit-border-radius:  60px;
+  -moz-border-radius:     60px;
+  border-radius:          60px;
+}
+
+section#current div.more  {
+  padding: 10px;
+  margin: 0 25px 0 0;
+}
+section#current div.more  p {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #4183c4;
+  margin: 5px;
+}
+section#current div.more  p:first-child {
+  margin: 0;
+}
+
+section#available_solos {
+  background: orange;
+}
+section#available_solos  div.thumbnail {
+  float:left;
+  background: lightyellow
+}
+section#available_solos  div.thumbnail img{
+  border-radius: 40px;
+}
+
+
+section#available_pairs {
+    background: lightgreen;
+}
+section#available_pairs  div.thumbnail {
+  float:left;
+}
+
+</style>
+
+<body>
+
+  <section id='current' class='group'>
+    <h2 >Next commits' author : </h2>
+    <div class="thumbnail_naked">
+      <img src="http://gravatar.com/avatar/af866b79ff6c94a44647c05c3d146966.png?s=120"/>
+    </div>
+    <div class="more">
+      <p>Alain Ravet</p>
+      <p>alainravet@gmail.com</p>
+      <pre>
+# in the console:
+  $ git config --global user.email "alainravet@gmail.com"
+  $ git config --global user.name  "Alain Ravet"
+      </pre>
+    </div>
+    <div style="clear:both"></div>
+  </section>
+
+  <p>
+  info: the data below is stored in ~/.pairgit.yml
+  </p>  
+
+  <section id="available_pairs" class="group">
+    <h2 >Known Pairs <small>(click to select as new authors)</small></h2>
+  
+    <div class="thumbnail" onclick="alert('... and Aliaksei Kliuchnikau is now the current author');">
+      <p>Alain Ravet +<br>Aliaksei Kliuchnikau</p>
+      <img src="http://gravatar.com/avatar/aa8da58092dec2aa6c808ea9e56b0cb7.png?d=identicon"/>
+      <p>dev+<b>alainravet</b>_<b>kliuchnikau</b><br>@gmail.com</p>
+    </div>
+    <div class="thumbnail">
+      <p>Alain Ravet +<br>Nathan Vanauwera</p>
+      <img src="http://gravatar.com/avatar/d67a73f12563072f6ac34bbf861cb9c9.png"/>
+      <p>ppatvasco+<b>ara</b>_<b>nva</b><br>@gmail.com</p>
+    </div>
+    <div class="thumbnail">
+      <p>Alain Ravet +<br>Beatriz Febles</p>
+      <img src="http://gravatar.com/avatar/8fe6d4372a5ad003a45696b086e88125.png?d=identicon"/>
+      <p>dev+<b>alainravet</b>_<b>kishiamy</b><br>@gmail.com</p>
+    </div>
+    <div style="clear:both"></div>
+  </section>
+
+  <section id="available_solos" class="group">
+    <h2 >Known Solos <small>(click to select as new author)</small></h2>
+    <div class="thumbnail">
+      <p class="githubid">alainravet</p>
+      <img src="http://gravatar.com/avatar/af866b79ff6c94a44647c05c3d146966.png"/>
+    </div>
+    <div class="thumbnail">
+      <p class="githubid">kishiamy</p>
+      <img src="http://gravatar.com/avatar/615f70549f825cd84f8f4b40f7d6102e.png"/>
+    </div>
+    <div class="thumbnail">
+      <p class="githubid">kliuchnikau</p>
+      <img src="http://gravatar.com/avatar/68fc3ecec3de051d5ad23ebc96f61c62.png"/>
+    </div>
+    <div style="clear:both"></div>
+  </section>
+
+
+</body>
+</html>

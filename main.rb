@@ -1,31 +1,28 @@
-require 'rubygems'
-require 'bundler/setup'
+#require 'rubygems'
+#require 'bundler/setup'
 
 require 'cuba'
 require 'rack/protection'
-
-Cuba.use Rack::Session::Cookie, :secret => '__a_very_long_string__'
+#require 'securerandom' ; puts SecureRandom.urlsafe_base64(44)
+Cuba.use Rack::Session::Cookie, :secret => 'kXqb5TFnCYeg393UotH5yVNesNBHxAa1OJXAeQN4fMjdfne229CP5c1Wzgc'
 Cuba.use Rack::Protection
 
-require 'digest/md5'
-def avatar_url(email)
-  gravatar_id = Digest::MD5::hexdigest(email).downcase
-  "http://gravatar.com/avatar/#{gravatar_id}.png"
-end
-  Cuba.define do
+require 'cuba/render'
+require 'erb'
+Cuba.plugin(Cuba::Render)
+
+Dir["lib/**/*.rb"].sort.each { |f| require_relative f }
+Dir["helpers/**/*helper.rb"].sort.each { |f| require_relative f }
+
+
+Cuba.define do
   on get do
     on root do
-      user_email = `git config --global --get user.email`.chomp
-      user_name  = `git config --global --get user.name`.chomp
-      res.write "
-      <html>
-        <body>
-          <p>user.email = #{user_email}</p>
-          <p>user.name = #{user_name}</p>
-            <img src='#{avatar_url(user_email)}'>
-        </body>
-      </html>
-      "
+      res.write view 'main', {
+        solos:    Config.solos,
+        pairs:    Config.pairs,
+        current:  GitUser.current
+      }
     end
   end
 end

@@ -9,6 +9,7 @@ GEM
     rack (1.6.1)
     rack-protection (1.5.3)
       rack
+    tilt (1.4.1)
 
 PLATFORMS
   ruby
@@ -17,3 +18,4 @@ DEPENDENCIES
   cuba
   launchy
   rack-protection
+  tilt
