@@ -20,18 +20,19 @@ $ git config --global user.name  "<%= current.name %>"
 
 <p>info: the data below is stored in ~/.pairgit.yml</p>  
 
+
+
 <section id="available_pairs" class="group">
   <h2 >Known Pairs <small>(click to select as new authors)</small></h2>
 
-  <% pairs.each do |user| %>
-    <div class="thumbnail" xonclick="alert('... and <%= user.name %> are now the current authors');">
-<form name="submitForm" method="POST" action="<%= set_current_path(user) %>">
-    <input type="hidden" name="name"  value="<%= user.name  %>">
-    <input type="hidden" name="email" value="<%= user.email %>">
-    <A HREF="javascript:document.submitForm.submit()">Click Me</A>
-    <input type="submit">SUBMIT</input>
-</form>
-<br>
+  <% pairs.each_with_index do |user, idx| 
+    form_id = "pair_form_#{idx}"
+  %>
+    <div class="thumbnail" onclick="document.getElementById('<%= form_id %>').submit()">
+      <form id="<%=form_id %>" method="POST" action="<%= set_current_path(user) %>">
+          <input type="hidden" name="name"  value="<%= user.name  %>">
+          <input type="hidden" name="email" value="<%= user.email %>">
+      </form>
       <p><%= format_pair_names(user.name) %></p>
       <img src="<%= user.avatar_url %>?d=identicon"/>
       <p><%= format_pair_email(user.email) %></p>
@@ -43,8 +44,15 @@ $ git config --global user.name  "<%= current.name %>"
 <section id="available_solos" class="group">
   <h2 >Known Solos <small>(click to select as new author)</small></h2>
 
-  <% solos.each do |user| %>
-    <div class="thumbnail" onclick="alert('... and <%= user.name %> is now the current author');">
+  <% solos.each_with_index do |user, idx| 
+    form_id = "solo_form_#{idx}"
+  %>
+    <div class="thumbnail" onclick="document.getElementById('<%= form_id %>').submit()">
+      <form id="<%=form_id %>" method="POST" action="<%= set_current_path(user) %>">
+          <input type="hidden" name="name"  value="<%= user.name  %>">
+          <input type="hidden" name="email" value="<%= user.email %>">
+      </form>
+      
       <p><%= user.name  %></p>
       <img src="<%= user.avatar_url %>?d=identicon"/>
       <p><%= user.email %></p>
