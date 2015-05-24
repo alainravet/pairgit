@@ -15,26 +15,30 @@ Dir["lib/**/*.rb"].sort.each { |f| require_relative f }
 Dir["helpers/**/*helper.rb"].sort.each { |f| require_relative f }
 
 Cuba.define do
-# -----------------------------------
-# clear the flash after each request
-# -----------------------------------
+  # -----------------------------------
+  # clear the flash after each request
+  # -----------------------------------
+  def clear_flash
+    env['rack.session']['flash']={}
+  end
   def res_write(s)
     res.write s
-    env['rack.session']['flash']={}
+    clear_flash
   end
-
   def res_redirect(path, status=nil)
     res.redirect path, status
-    env['rack.session']['flash']={}
+    clear_flash
   end
 
-# -----------------------------------
-# serve css files
-# -----------------------------------
 
-# -----------------------------------
+  def res_write(s) res.write(s) ; clear_flash end
+  def res_redirect(path, status=nil) redirect(path, status) ;clear_flash end
+
 
   on get do
+    # -----------------------------------
+    # serve css files
+    # -----------------------------------
     on "styles", extension("css") do |file|
       res.write File.open("styles/#{file}.css").read
     end
