@@ -11,28 +11,14 @@ require 'erb'
 #require 'securerandom' ; puts SecureRandom.urlsafe_base64(44)
 Cuba.use Rack::Session::Cookie, :secret => 'kXqb5TFnCYeg393UotH5yVNesNBHxAa1OJXAeQN4fMjdfne229CP5c1Wzgc'
 
-Dir["lib/**/*.rb"].sort.each { |f| require_relative f }
+Dir["lib/**/*.rb"          ].sort.each { |f| require_relative f }
 Dir["helpers/**/*helper.rb"].sort.each { |f| require_relative f }
 
 Cuba.define do
-  # -----------------------------------
-  # clear the flash after each request
-  # -----------------------------------
-  def clear_flash
-    env['rack.session']['flash']={}
-  end
   def res_write(s)
     res.write s
     clear_flash
   end
-  def res_redirect(path, status=nil)
-    res.redirect path, status
-    clear_flash
-  end
-
-
-  def res_write(s) res.write(s) ; clear_flash end
-  def res_redirect(path, status=nil) redirect(path, status) ;clear_flash end
 
 
   on get do

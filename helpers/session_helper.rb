@@ -1,6 +1,10 @@
 require 'webrick'
 module SessionHelper
 
+  def clear_flash
+    session['flash'] = {}
+  end
+
   def flash
     session['flash'] ||= {}
   end
