@@ -7,8 +7,6 @@ GEM
     launchy (2.4.3)
       addressable (~> 2.3)
     rack (1.6.1)
-    rack-protection (1.5.3)
-      rack
     tilt (1.4.1)
 
 PLATFORMS
@@ -17,5 +15,4 @@ PLATFORMS
 DEPENDENCIES
   cuba
   launchy
-  rack-protection
   tilt
