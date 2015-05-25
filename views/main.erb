@@ -7,7 +7,7 @@
 <section id='current' class='group'>
   <h2 >Next commits' author : </h2>
   <div class="thumbnail_naked">
-    <img src="<%= current.avatar_url%>?s=120&d=identicon"/>
+    <img src="<%= current.avatar_url %>"/>
   </div>
   <div class="more">
     <p><%= current.name  %></p>
@@ -38,7 +38,7 @@ $ git config --global user.name  "<%= current.name %>"
           <input type="hidden" name="group" value="pair">
       </form>
       <p><%= format_pair_names(user.name) %></p>
-      <img src="<%= user.avatar_url %>?d=identicon"/>
+      <img src="<%= user.avatar_url %>"/>
       <p><%= format_pair_email(user.email) %></p>
     </div>
   <% end %>
@@ -61,7 +61,7 @@ $ git config --global user.name  "<%= current.name %>"
       </form>
       
       <p><%= user.name  %></p>
-      <img src="<%= user.avatar_url %>?d=identicon"/>
+      <img src="<%= user.avatar_url %>"/>
       <p><%= user.email %></p>
     </div>
   <% end %>

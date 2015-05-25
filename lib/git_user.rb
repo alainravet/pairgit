@@ -22,7 +22,7 @@ class GitUser < Struct.new(:name, :email)
 
     query_strings = ['d=identicon']
     query_strings << "s=#{options[:size]}" if options[:size]
-    query_string = query_strings.join('?')
+    query_string = query_strings.join('&')
 
     "http://gravatar.com/avatar/#{gravatar_id}.png?#{query_string}"
   end

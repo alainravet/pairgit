@@ -24,7 +24,7 @@ Cuba.define do
   on get do
     # GET /styles/main.css
     on "styles", extension("css") do |file|
-      res.write File.open(File.expand_path("styles/#{file}.css", File.dirname(__FILE__))).read
+      res.write File.open(File.expand_path("views/styles/#{file}.css", File.dirname(__FILE__))).read
     end
 
     on root do
