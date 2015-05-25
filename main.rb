@@ -29,8 +29,8 @@ Cuba.define do
 
     on root do
       res_write view 'main', {
-        solos:    GitConfig.solos,
-        pairs:    GitConfig.pairs,
+        solos:    GitData.solos,
+        pairs:    GitData.pairs,
         current:  GitUser.get_current
       }
     end
