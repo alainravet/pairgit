@@ -1,5 +1,5 @@
 //------------------------------------
-
+alert(1)
 var App = {
   init: function() {
     includeJs("views/js/md5.js");
@@ -11,6 +11,10 @@ var App = {
     document.getElementById('name_2'    ).addEventListener('keyup', App.refresh_thumbnail )
   },
 
+  reveal_new_pair_form: function() {
+    toggle_visibility("form-with-table");
+    document.getElementById('githubid_2').focus()
+  },
 
   refresh_thumbnail: function () {
     var base_email_parts = document.getElementById("base_email").value.split('@');
@@ -65,3 +69,11 @@ function string_replace(model, replacements) {
     );
 }
 
+function toggle_visibility(id) {
+   var e = document.getElementById(id);
+   if(e.style.display == 'block')
+      e.style.display = 'none';
+   else
+      e.style.display = 'block';
+}
+alert(2)

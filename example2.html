@@ -113,14 +113,14 @@ tr.row input.name {
 }
 </style>
 </head>
-
 <body onload="App.init();">
 
   <section id="available_pairs" class="group">
-    <p data-model="number">number</p>
-    <input type="number" data-controller="number" />
-  
-  <div id="form-with-table" style="border:solid 1px red; background-color:white;float:left">
+<p>  
+  <a id='btn_create_new_pair' href='#' onclick='App.reveal_new_pair_form()'>Create a new pair</a>
+</p>
+  <div id="form-with-table" style="xdisplay:none;border:solid 1px red; background-color:white;float:left">
+    
     <table border="0" cellspacing="5" cellpadding="5" style="">
       <tr class="header">
         <th>base email</th>
