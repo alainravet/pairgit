@@ -30,7 +30,7 @@ $ git config --global user.name  "<%= current.name %>"
 
 
   <p> <a id='btn_create_new_pair' href='#' onclick='App.reveal_new_pair_form()'>Create a new pair</a></p>
-  <div id="form-with-table" style="Xdisplay:none;border:solid 1px red; background-color:white;float:left">
+  <div id="form-with-table" style="display:none;border:solid 1px red; background-color:white;float:left">
 
     <form id="add_new_pair" method="POST" action="<%= add_new_pair_path %>">    
       <input id="pair_name"  type="text" name="name">
