@@ -115,3 +115,8 @@ section#available_pairs {
 section#available_pairs  div.thumbnail {
   float:left;
 }
+
+tr.row input.name {
+  color: red;
+  width:200px;
+}

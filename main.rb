@@ -26,6 +26,10 @@ Cuba.define do
     on "styles", extension("css") do |file|
       res.write File.open(File.expand_path("views/styles/#{file}.css", File.dirname(__FILE__))).read
     end
+    on "js", extension("js") do |file|
+      res.headers['Content-Type'] = 'application/javascript'
+      res.write File.open(File.expand_path("views/js/#{file}.js", File.dirname(__FILE__))).read
+    end
 
     on root do
       res_write view 'main', {
@@ -50,6 +54,22 @@ Cuba.define do
         res.write "ERROR: You need to provide a name and an email"
       end
     end
+    
+
+    on terminal('add_new_pair') do 
+      on param('pair_name'), param('pair_email') do |name, email|
+        user = GitUser.new(name, email)
+        user.set_current
+
+        set_notice('Added a new pair')
+        res.redirect "/"
+      end
+      on true do
+        res.write "ERROR: You need to provide a name and an email"
+      end
+    end
+    
+    
   end
 end
 

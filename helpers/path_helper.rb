@@ -14,6 +14,10 @@ module PathHelper
     escaped_email = WEBrick::HTTPUtils.escape(git_user.email)
     "/set_current?name=#{escaped_name}&email=#{escaped_email}"
   end
+  
+  def add_new_pair_path
+    '/add_new_pair'
+  end
 end
 
 Cuba.plugin PathHelper

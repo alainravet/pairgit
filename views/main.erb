@@ -7,7 +7,7 @@
 <section id='current' class='group'>
   <h2 >Next commits' author : </h2>
   <div class="thumbnail_naked">
-    <img src="<%= current.avatar_url %>"/>
+    <img src="<%= current.pair_email %>"/>
   </div>
   <div class="more">
     <p><%= current.name  %></p>
@@ -28,41 +28,60 @@ $ git config --global user.name  "<%= current.name %>"
 <section id="available_pairs" class="group">
   <h2 >Known Pairs <small>(click to select as new authors)</small></h2>
 
-  <form id='create_solor_user' method='POST' action='<%= users_path %>'>
-      <input type='hidden' name='group' value='solo'>
-      <fieldset>
-        <legend>Add a Pair git user</legend>
-        <div class='inputs'>
-          <p>User 1:</p>
-          <p>
-            <label for='github_id_1'>Github id</label> <input class='name' type='text' name='github_id_1' >
-            <label for='name_1'     >Name     </label> <input class='name' type='text' name='name_1'      >
-          </p>
-          <div style='clear:both'></div>
-          <p>User 2:</p>
-          <p>
-            <label for='github_id_2'>Github id</label> <input class='name' type='text' name='github_id_2' >
-            <label for='name_2'     >Name     </label> <input class='name' type='text' name='name_2'      >
-          </p>
-          
-          <input type='submit'>
-        </div>
-        <div class='thumbnail_p'>
-          <div class="thumbnail" >
-            <% user = GitUser.new("name 1 + name 2", "dev+name1_name_2@gmail.com")%>
-            <p><%= format_pair_names(user.name) %></p>
-            <img src="<%= user.avatar_url %>"/>
-            <p><%= format_pair_email(user.email) %></p>
-          </div>
-        </div>
-      </fieldset>
-  </form>
-  <hr>
+
+  <p> <a id='btn_create_new_pair' href='#' onclick='App.reveal_new_pair_form()'>Create a new pair</a></p>
+  <div id="form-with-table" style="Xdisplay:none;border:solid 1px red; background-color:white;float:left">
+
+    <form id="add_new_pair" method="POST" action="<%= add_new_pair_path %>">    
+      <input type="submit">
+      <input id="pair_name"  type="text" name="name">
+      <input id="pair_email" type="text" name="email">
+      
+      <table border="0" cellspacing="5" cellpadding="5" style="">
+        <tr class="header">
+          <th>base email</th>
+          <td><input id='base_email' type="text" value="dev@wimdu.com"></td>
+        </tr>
+      </table>
+
+      <table border="0" cellspacing="5" cellpadding="5" style="float:left">
+        <tr class="header">
+          <th></th>
+          <th>github id</th>
+          <th>full name</th>
+        </tr>
+        <tr class="row row1">
+          <td>user 1</td>
+          <td><input id='githubid_1' class='githubid' type="text"></td>
+          <td><input id='name_1' class='name' type="text"></td>
+        </tr>
+        <tr class="row rpair_email      <td>user 2</td>
+          <td><input id='githubid_2' class='githubid' type="text"></td>
+          <td><input id='name_2' class='name' type="text"></td>
+        </tr>
+        <tr/>
+      </table>
+      
+    </form>
+
+    <div class="thumbnail">
+      <p id="pair_future_name">??</p>
+      <img id="pair_future_avatar"src="http://gravatar.com/avatar/aa8da58092dec2aa6c808ea9e56b0cb7.png?d=identicon"/>
+      <p id="pair_future_email">??</p>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+  <div style="clear:both"></div>
+
+
+
+
 
   <% pairs.each_with_index do |user, idx| 
     form_id = "pair_form_#{idx}"
   %>
-    <div class="thumbnail" onclick="document.getElementById('<%= form_id %>').submit()">
+  
+    <div class="thumbnail" onclick="document.getElemepair_email= form_id %>').submit()">
       <form id="<%=form_id %>" method="POST" action="<%= set_current_path(user) %>">
           <input type="hidden" name="name"  value="<%= user.name  %>">
           <input type="hidden" name="email" value="<%= user.email %>">
@@ -84,7 +103,7 @@ $ git config --global user.name  "<%= current.name %>"
   <% solos.each_with_index do |user, idx| 
     form_id = "solo_form_#{idx}"
   %>
-    <div class="thumbnail" onclick="document.getElementById('<%= form_id %>').submit()">
+    <div class="thumbnail" onclick="documepair_emailentById('<%= form_id %>').submit()">
       <form id="<%=form_id %>" method="POST" action="<%= set_current_path(user) %>">
           <input type="hidden" name="name"  value="<%= user.name  %>">
           <input type="hidden" name="email" value="<%= user.email %>">

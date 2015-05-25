@@ -1,8 +1,7 @@
-//------------------------------------
-alert(1)
 var App = {
   init: function() {
-    includeJs("views/js/md5.js");
+    console.log('in App.init')
+    includeJs("js/md5.js");
 
     document.getElementById('base_email').addEventListener('keyup', App.refresh_thumbnail )
     document.getElementById('githubid_1').addEventListener('keyup', App.refresh_thumbnail )
@@ -13,7 +12,7 @@ var App = {
 
   reveal_new_pair_form: function() {
     toggle_visibility("form-with-table");
-    document.getElementById('githubid_2').focus()
+    document.getElementById('githubid_1').focus()
   },
 
   refresh_thumbnail: function () {
@@ -25,13 +24,14 @@ var App = {
       "%github_2%":     string_or(document.getElementById("githubid_2").value, '??')
     }
 
-    var pair_email_tmp = string_replace("%email_prefix%+%github_1%_%github_2%@%email_suffix%", replacements);;
+    var pair_email = string_replace("%email_prefix%+%github_1%_%github_2%@%email_suffix%", replacements);;
+    document.getElementById("pair_email").value = pair_email;
 
     var pair_email_decor = "%email_prefix%+<b>%github_1%</b>_<b>%github_2%</b><br>@%email_suffix%"
     document.getElementById("pair_future_email").innerHTML = string_replace(pair_email_decor, replacements);
     
     gravatar_url = "http://gravatar.com/avatar/%gravatar_id%.png?d=identicon"
-    gu = string_replace(gravatar_url, {'%gravatar_id%':md5(pair_email_tmp)});
+    gu = string_replace(gravatar_url, {'%gravatar_id%':md5(pair_email)});
     console.log(gu)
     document.getElementById("pair_future_avatar").src = gu
 
@@ -40,6 +40,11 @@ var App = {
       "%name_2%":     string_or(document.getElementById("name_2").value, '??')
     }
 
+    var pair_name = "%name_1% + %name_2%"
+    document.getElementById("pair_future_name").value = string_replace(pair_name, replacements);;
+
+    document.getElementById("pair_name").innerHTML = pair_name;
+    
     var pair_name_decor = "<b>%name_1%</b> +<br><b>%name_2%</b>"
     document.getElementById("pair_future_name").innerHTML = string_replace(pair_name_decor, replacements);;
   },
@@ -76,4 +81,3 @@ function toggle_visibility(id) {
    else
       e.style.display = 'block';
 }
-alert(2)
