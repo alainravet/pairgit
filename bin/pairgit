@@ -5,4 +5,4 @@ require 'rack/server'
 
 Rack::Server.start  Port:       9292, 
                     config:     File.expand_path('../../config.ru', __FILE__),
-                    daemonize:  false
+                    daemonize:  true
