@@ -1,4 +1,18 @@
 .githubid {color:#4183c4}
+form {
+  font-size: 1.4em;
+}
+form label, 
+form input.name {
+  float: left;
+}
+form label      {width: 100px;}
+form input.name {width: 150px;}
+
+form div.inputs { 
+  float:left;
+}
+form div.thumbnail_p { }
 
 body {
   font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;

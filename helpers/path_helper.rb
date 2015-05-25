@@ -5,6 +5,10 @@ module PathHelper
     /#{path}\/?\z/
   end
     
+  def users_path
+    "/users"
+  end
+    
   def set_current_path(git_user)
     escaped_name  = WEBrick::HTTPUtils.escape(git_user.name )
     escaped_email = WEBrick::HTTPUtils.escape(git_user.email)

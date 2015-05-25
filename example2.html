@@ -1,5 +1,7 @@
 <html>
 <head>
+  <script src="views/js/form.js"></script>
+  
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <title>example</title>
   
@@ -112,12 +114,21 @@ tr.row input.name {
 </style>
 </head>
 
-<body>
+<body onload="App.init();">
 
-  <div id="form-with-table">
-    
-    
-    <table border="0" cellspacing="5" cellpadding="5">
+  <section id="available_pairs" class="group">
+    <p data-model="number">number</p>
+    <input type="number" data-controller="number" />
+  
+  <div id="form-with-table" style="border:solid 1px red; background-color:white;float:left">
+    <table border="0" cellspacing="5" cellpadding="5" style="">
+      <tr class="header">
+        <th>base email</th>
+        <td><input id='base_email' type="text" value="dev@wimdu.com"></td>
+      </tr>
+    </table>
+
+    <table border="0" cellspacing="5" cellpadding="5" style="float:left">
       <tr class="header">
         <th></th>
         <th>github id</th>
@@ -125,77 +136,25 @@ tr.row input.name {
       </tr>
       <tr class="row row1">
         <td>user 1</td>
-        <td><input class='githubid' type="text"></td>
-        <td><input class='name' type="text"></td>
+        <td><input id='githubid_1' class='githubid' type="text"></td>
+        <td><input id='name_1' class='name' type="text"></td>
       </tr>
       <tr class="row row2">
         <td>user 2</td>
-        <td><input class='githubid' type="text"></td>
-        <td><input class='name' type="text"></td>
+        <td><input id='githubid_2' class='githubid' type="text"></td>
+        <td><input id='name_2' class='name' type="text"></td>
       </tr>
+      <tr/>
     </table>
+    <div class="thumbnail">
+      <p id="pair_future_name">??</p>
+      <img id="pair_future_avatar"src="http://gravatar.com/avatar/aa8da58092dec2aa6c808ea9e56b0cb7.png?d=identicon"/>
+      <p id="pair_future_email">??</p>
+    </div>
+    <div style="clear:both"></div>
   </div>
-
-
-  <section id='current' class='group'>
-    <h2 >Next commits' author : </h2>
-    <div class="thumbnail_naked">
-      <img src="http://gravatar.com/avatar/af866b79ff6c94a44647c05c3d146966.png?s=120"/>
-    </div>
-    <div class="more">
-      <p>Alain Ravet</p>
-      <p>alainravet@gmail.com</p>
-      <pre>
-# in the console:
-  $ git config --global user.email "alainravet@gmail.com"
-  $ git config --global user.name  "Alain Ravet"
-      </pre>
-    </div>
-    <div style="clear:both"></div>
-  </section>
-
-  <p>
-  info: the data below is stored in ~/.pairgit.yml
-  </p>  
-
-  <section id="available_pairs" class="group">
-    <h2 >Known Pairs <small>(click to select as new authors)</small></h2>
-  
-    <div class="thumbnail" onclick="alert('... and Aliaksei Kliuchnikau is now the current author');">
-      <p>Alain Ravet +<br>Aliaksei Kliuchnikau</p>
-      <img src="http://gravatar.com/avatar/aa8da58092dec2aa6c808ea9e56b0cb7.png?d=identicon"/>
-      <p>dev+<b>alainravet</b>_<b>kliuchnikau</b><br>@gmail.com</p>
-    </div>
-    <div class="thumbnail">
-      <p>Alain Ravet +<br>Nathan Vanauwera</p>
-      <img src="http://gravatar.com/avatar/d67a73f12563072f6ac34bbf861cb9c9.png"/>
-      <p>ppatvasco+<b>ara</b>_<b>nva</b><br>@gmail.com</p>
-    </div>
-    <div class="thumbnail">
-      <p>Alain Ravet +<br>Beatriz Febles</p>
-      <img src="http://gravatar.com/avatar/8fe6d4372a5ad003a45696b086e88125.png?d=identicon"/>
-      <p>dev+<b>alainravet</b>_<b>kishiamy</b><br>@gmail.com</p>
-    </div>
-    <div style="clear:both"></div>
-  </section>
-
-  <section id="available_solos" class="group">
-    <h2 >Known Solos <small>(click to select as new author)</small></h2>
-    <div class="thumbnail">
-      <p class="githubid">alainravet</p>
-      <img src="http://gravatar.com/avatar/af866b79ff6c94a44647c05c3d146966.png"/>
-    </div>
-    <div class="thumbnail">
-      <p class="githubid">kishiamy</p>
-      <img src="http://gravatar.com/avatar/615f70549f825cd84f8f4b40f7d6102e.png"/>
-    </div>
-    <div class="thumbnail">
-      <p class="githubid">kliuchnikau</p>
-      <img src="http://gravatar.com/avatar/68fc3ecec3de051d5ad23ebc96f61c62.png"/>
-    </div>
-    <div style="clear:both"></div>
-  </section>
-
-
+  <div style="clear:both"></div>
 </body>
 </html>
+
+

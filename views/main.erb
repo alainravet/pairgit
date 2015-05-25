@@ -28,6 +28,37 @@ $ git config --global user.name  "<%= current.name %>"
 <section id="available_pairs" class="group">
   <h2 >Known Pairs <small>(click to select as new authors)</small></h2>
 
+  <form id='create_solor_user' method='POST' action='<%= users_path %>'>
+      <input type='hidden' name='group' value='solo'>
+      <fieldset>
+        <legend>Add a Pair git user</legend>
+        <div class='inputs'>
+          <p>User 1:</p>
+          <p>
+            <label for='github_id_1'>Github id</label> <input class='name' type='text' name='github_id_1' >
+            <label for='name_1'     >Name     </label> <input class='name' type='text' name='name_1'      >
+          </p>
+          <div style='clear:both'></div>
+          <p>User 2:</p>
+          <p>
+            <label for='github_id_2'>Github id</label> <input class='name' type='text' name='github_id_2' >
+            <label for='name_2'     >Name     </label> <input class='name' type='text' name='name_2'      >
+          </p>
+          
+          <input type='submit'>
+        </div>
+        <div class='thumbnail_p'>
+          <div class="thumbnail" >
+            <% user = GitUser.new("name 1 + name 2", "dev+name1_name_2@gmail.com")%>
+            <p><%= format_pair_names(user.name) %></p>
+            <img src="<%= user.avatar_url %>"/>
+            <p><%= format_pair_email(user.email) %></p>
+          </div>
+        </div>
+      </fieldset>
+  </form>
+  <hr>
+
   <% pairs.each_with_index do |user, idx| 
     form_id = "pair_form_#{idx}"
   %>
