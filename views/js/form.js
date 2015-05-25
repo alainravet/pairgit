@@ -16,6 +16,7 @@ var App = {
   },
 
   refresh_thumbnail: function () {
+    // refresh the email:
     var base_email_parts = document.getElementById("base_email").value.split('@');
     var replacements = {
       "%email_prefix%": base_email_parts[0],
@@ -30,20 +31,20 @@ var App = {
     var pair_email_decor = "%email_prefix%+<b>%github_1%</b>_<b>%github_2%</b><br>@%email_suffix%"
     document.getElementById("pair_future_email").innerHTML = string_replace(pair_email_decor, replacements);
     
+    // refresh the avatar:
     gravatar_url = "http://gravatar.com/avatar/%gravatar_id%.png?d=identicon"
     gu = string_replace(gravatar_url, {'%gravatar_id%':md5(pair_email)});
     console.log(gu)
     document.getElementById("pair_future_avatar").src = gu
 
+    // refresh the name:
     replacements = {
       "%name_1%":     string_or(document.getElementById("name_1").value, '??'),
       "%name_2%":     string_or(document.getElementById("name_2").value, '??')
     }
 
     var pair_name = "%name_1% + %name_2%"
-    document.getElementById("pair_future_name").value = string_replace(pair_name, replacements);;
-
-    document.getElementById("pair_name").innerHTML = pair_name;
+    document.getElementById("pair_name").value = string_replace(pair_name, replacements);;
     
     var pair_name_decor = "<b>%name_1%</b> +<br><b>%name_2%</b>"
     document.getElementById("pair_future_name").innerHTML = string_replace(pair_name_decor, replacements);;

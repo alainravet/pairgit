@@ -16,7 +16,7 @@ module PathHelper
   end
   
   def add_new_pair_path
-    '/add_new_pair'
+    '/add_new_pair?name=:name&email=:email'
   end
 end
 

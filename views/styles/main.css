@@ -120,3 +120,11 @@ tr.row input.name {
   color: red;
   width:200px;
 }
+
+form#add_new_pair input.submit {
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #4183c4;
+  color: white;
+  padding: 3px;
+}

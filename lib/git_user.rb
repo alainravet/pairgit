@@ -14,7 +14,7 @@ class GitUser < Struct.new(:name, :email)
   
   def set_current
     `git config --global user.email #{email}`
-    `git config --global user.name  #{name}`
+    `git config --global user.name  '#{name}'`
   end
   
   def avatar_url(options={})

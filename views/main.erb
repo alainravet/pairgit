@@ -7,7 +7,7 @@
 <section id='current' class='group'>
   <h2 >Next commits' author : </h2>
   <div class="thumbnail_naked">
-    <img src="<%= current.pair_email %>"/>
+    <img src="<%= current.avatar_url %>"/>
   </div>
   <div class="more">
     <p><%= current.name  %></p>
@@ -33,37 +33,37 @@ $ git config --global user.name  "<%= current.name %>"
   <div id="form-with-table" style="Xdisplay:none;border:solid 1px red; background-color:white;float:left">
 
     <form id="add_new_pair" method="POST" action="<%= add_new_pair_path %>">    
-      <input type="submit">
       <input id="pair_name"  type="text" name="name">
       <input id="pair_email" type="text" name="email">
-      
-      <table border="0" cellspacing="5" cellpadding="5" style="">
-        <tr class="header">
-          <th>base email</th>
-          <td><input id='base_email' type="text" value="dev@wimdu.com"></td>
-        </tr>
-      </table>
-
-      <table border="0" cellspacing="5" cellpadding="5" style="float:left">
-        <tr class="header">
-          <th></th>
-          <th>github id</th>
-          <th>full name</th>
-        </tr>
-        <tr class="row row1">
-          <td>user 1</td>
-          <td><input id='githubid_1' class='githubid' type="text"></td>
-          <td><input id='name_1' class='name' type="text"></td>
-        </tr>
-        <tr class="row rpair_email      <td>user 2</td>
-          <td><input id='githubid_2' class='githubid' type="text"></td>
-          <td><input id='name_2' class='name' type="text"></td>
-        </tr>
-        <tr/>
-      </table>
-      
+      <input class="submit" type="submit" value="Add Pair">
     </form>
 
+    <table border="0" cellspacing="5" cellpadding="5" style="">
+      <tr class="header">
+        <th>base email</th>
+        <td><input id='base_email' type="text" value="dev@wimdu.com"></td>
+      </tr>
+    </table>
+
+    <table border="0" cellspacing="5" cellpadding="5" style="float:left">
+      <tr class="header">
+        <th></th>
+        <th>github id</th>
+        <th>full name</th>
+      </tr>
+      <tr class="row row1">
+        <td>user 1</td>
+        <td><input id='githubid_1' class='githubid' type="text"></td>
+        <td><input id='name_1' class='name' type="text"></td>
+      </tr>
+      <tr class="row row2">
+        <td>user 2</td>
+        <td><input id='githubid_2' class='githubid' type="text"></td>
+        <td><input id='name_2' class='name' type="text"></td>
+      </tr>
+      <tr/>
+    </table>
+      
     <div class="thumbnail">
       <p id="pair_future_name">??</p>
       <img id="pair_future_avatar"src="http://gravatar.com/avatar/aa8da58092dec2aa6c808ea9e56b0cb7.png?d=identicon"/>
@@ -81,7 +81,7 @@ $ git config --global user.name  "<%= current.name %>"
     form_id = "pair_form_#{idx}"
   %>
   
-    <div class="thumbnail" onclick="document.getElemepair_email= form_id %>').submit()">
+    <div class="thumbnail" onclick="document.getElementById('<%= form_id %>').submit()">
       <form id="<%=form_id %>" method="POST" action="<%= set_current_path(user) %>">
           <input type="hidden" name="name"  value="<%= user.name  %>">
           <input type="hidden" name="email" value="<%= user.email %>">
@@ -103,7 +103,7 @@ $ git config --global user.name  "<%= current.name %>"
   <% solos.each_with_index do |user, idx| 
     form_id = "solo_form_#{idx}"
   %>
-    <div class="thumbnail" onclick="documepair_emailentById('<%= form_id %>').submit()">
+    <div class="thumbnail" onclick="document.getElementById('<%= form_id %>').submit()">
       <form id="<%=form_id %>" method="POST" action="<%= set_current_path(user) %>">
           <input type="hidden" name="name"  value="<%= user.name  %>">
           <input type="hidden" name="email" value="<%= user.email %>">

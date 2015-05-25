@@ -57,11 +57,15 @@ Cuba.define do
     
 
     on terminal('add_new_pair') do 
-      on param('pair_name'), param('pair_email') do |name, email|
-        user = GitUser.new(name, email)
-        user.set_current
+      on param('name'), param('email') do |name, email|
+puts "1:  param('name') = #{param('name').inspect}"
+puts "1:  param('email') = #{param('email').inspect}"
 
-        set_notice('Added a new pair')
+        user = GitUser.new(name, email)
+puts "2:  user = #{user.inspect}"
+        user.set_current
+        #TODO : persist in the Yaml Store, if not already known
+        set_notice('success' + " Pair #{user.name.inspect} is the new current git user")
         res.redirect "/"
       end
       on true do
