@@ -1,0 +1,11 @@
+
+- start and config is empty
+  -> store current user (or pair), in the right category
+
+- add 1 solo
+- add 1 pair
+
+	base			dev+*_*@wimdu
+	user 1 : github id		alalal
+	user 2: github id		bqqqfdf
+	
