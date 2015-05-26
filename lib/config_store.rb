@@ -19,4 +19,11 @@ class ConfigStore
       s[:pairs] << git_user
     end
   end
+
+  def self.delete_pair(git_user)
+    s = yaml_store
+    s.transaction do 
+      s[:pairs] = s[:pairs].delete(git_user)
+    end
+  end
 end

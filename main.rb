@@ -55,6 +55,17 @@ Cuba.define do
       end
     end
     
+    on terminal('delete_pair') do 
+      on param('name'), param('email'), param('group') do |name, email|
+        user = GitUser.new(name, email)
+        ConfigStore.delete_pair(user)
+        res.redirect "/"
+      end
+      on true do
+        res.write "ERROR: You need to provide a name and an email"
+      end
+    end
+    
 
     on terminal('add_new_pair') do 
       on param('name'), param('email') do |name, email|
